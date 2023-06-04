@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>McChicken Clicker</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 1180px;
+      height: 1550px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .counter {
+      margin-top: 20px;
+      font-size: 48px;
+    }
+    .title {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .box {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 40px;
+      width: 100%;
+    }
+    .box h2 {
+      font-size: 28px;
+    }
+    .box p {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+    .box div {
+      margin: 0 10px; /* Adjust the margin as needed */
+    }
+    .item-box {
+      border: 2px solid black;
+      padding: 10px;
+    }
+  </style>
+  <script>
+    // Initialize the counter value
+    var counter = 0;
+    var interval;
+
+    // Function to increment the counter and update the display
+    function incrementCounter() {
+      if (counter >= 300) {
+        counter += 2;
+      } else {
+        counter++;
+      }
+      document.getElementById('counter-display').textContent = counter;
+    }
+
+    // Function to start the interval for automatic increment
+    function startInterval() {
+      interval = setInterval(function() {
+        if (counter >= 1500) {
+          counter += 25;
+        }
+        document.getElementById('counter-display').textContent = counter;
+      }, 1000);
+    }
+
+    // Function to stop the interval
+    function stopInterval() {
+      clearInterval(interval);
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="title">
+      <p>McChicken Clicker made by Villads</p>
+    </div>
+    <div class="counter">
+      <p>Mcchickens: <span id="counter-display">0</span></p>
+    </div>
+    <div>
+      <img src="https://o.remove.bg/downloads/9f243212-71d6-42d8-be6d-b9fd9ae85803/mcchicken-removebg-preview.png" onclick="incrementCounter()" alt="mcchicken Image">
+    </div>
+    <div class="box">
+      <div class="item-box" onclick="incrementCounter()">
+        <h2>Extra Salad (300+ to get)</h2>
+        <p>You will get 2 McChickens instead of 1</p>
+      </div>
+      <div class="item-box" onclick="startInterval()" onmouseout="stopInterval()">
+        <h2>Extra Chicken (1500+ to get)</h2>
+        <p>You will get 25 McChickens/sec</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
